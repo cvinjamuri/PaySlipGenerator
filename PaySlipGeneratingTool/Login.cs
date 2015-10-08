@@ -13,7 +13,7 @@ namespace PaySlipGeneratingTool
 {
     public partial class Login : Form
     {
-        
+
         public Login()
         {
             InitializeComponent();
@@ -27,22 +27,28 @@ namespace PaySlipGeneratingTool
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            IniFile ini = new IniFile("C:\\test.ini");
+            IniFile ini = new IniFile("../../test.ini");
             string UserName = ini.IniReadValue("User1", "UN");
             string password = ini.IniReadValue("User1", "PWD");
-            if (txtUser.Text == UserName && txtPassword.Text == password)
+            if (txtUser.Text == "" && txtPassword.Text == "")
+            {
+                LogonSuccessful = false;
+                MessageBox.Show("Please enter User and Password");
+                this.ActiveControl = txtUser;
+            }
+            else if (txtUser.Text == UserName && txtPassword.Text == password)
             {
                 LogonSuccessful = true;
-                this.Close();
 
+                this.Close();
             }
             else
             {
                 LogonSuccessful = false;
+                MessageBox.Show("Invalid Credentials");
+                this.ActiveControl = txtUser;
             }
-             
-       
-           
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -52,7 +58,7 @@ namespace PaySlipGeneratingTool
 
         private void Login_Load(object sender, EventArgs e)
         {
-           
+
         }
     }
 }
