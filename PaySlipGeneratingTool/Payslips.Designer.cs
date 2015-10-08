@@ -111,11 +111,12 @@
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(111, 218);
+            this.lblMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMsg.Location = new System.Drawing.Point(269, 217);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(35, 13);
+            this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 8;
-            this.lblMsg.Text = "label1";
+            this.lblMsg.Click += new System.EventHandler(this.lblMsg_Click);
             // 
             // cmbYear
             // 

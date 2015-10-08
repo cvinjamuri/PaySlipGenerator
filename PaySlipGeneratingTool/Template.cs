@@ -29,15 +29,24 @@ namespace PaySlipGeneratingTool
 
         private void btnUploadTemplate_Click(object sender, EventArgs e)
         {
-            string sourceFile = txtTemplate.Text;
-            string extention = Path.GetExtension(txtTemplate.Text);
-            string destinationFile = "adt" + extention;
-            string destinationFilepath = "../../" + destinationFile;
-            if (File.Exists(destinationFilepath))
+            if (txtTemplate.Text == "")
             {
-                File.Delete(destinationFilepath);
+                MessageBox.Show("Please select file to upload... ");
+                txtTemplate.Focus();
             }
-            File.Copy(sourceFile, destinationFilepath);
+            else
+            {
+                string sourceFile = txtTemplate.Text;
+                string extention = Path.GetExtension(txtTemplate.Text);
+                string destinationFile = "adt" + extention;
+                string destinationFilepath = "../../" + destinationFile;
+                if (File.Exists(destinationFilepath))
+                {
+                    File.Delete(destinationFilepath);
+                }
+                File.Copy(sourceFile, destinationFilepath);
+                lblmsg.Text = "Template uploaded successfully";
+            }
         }
     }
 }

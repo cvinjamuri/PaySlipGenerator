@@ -304,5 +304,10 @@ namespace PaySlipGeneratingTool
             }
             return sb.ToString().TrimEnd();
         }
+
+        private void lblMsg_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

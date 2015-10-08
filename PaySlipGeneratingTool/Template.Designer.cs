@@ -31,6 +31,7 @@
             this.txtTemplate = new System.Windows.Forms.TextBox();
             this.btnBrowseTemplate = new System.Windows.Forms.Button();
             this.btnUploadTemplate = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTemplate
@@ -60,11 +61,21 @@
             this.btnUploadTemplate.UseVisualStyleBackColor = true;
             this.btnUploadTemplate.Click += new System.EventHandler(this.btnUploadTemplate_Click);
             // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(62, 163);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(0, 13);
+            this.lblmsg.TabIndex = 3;
+            // 
             // Template
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.btnUploadTemplate);
             this.Controls.Add(this.btnBrowseTemplate);
             this.Controls.Add(this.txtTemplate);
@@ -80,5 +91,6 @@
         private System.Windows.Forms.TextBox txtTemplate;
         private System.Windows.Forms.Button btnBrowseTemplate;
         private System.Windows.Forms.Button btnUploadTemplate;
+        private System.Windows.Forms.Label lblmsg;
     }
 }
