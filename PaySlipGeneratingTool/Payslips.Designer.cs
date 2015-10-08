@@ -30,12 +30,12 @@
         {
             this.lblMonth = new System.Windows.Forms.Label();
             this.cmbMonth = new System.Windows.Forms.ComboBox();
-            this.cmbYear = new System.Windows.Forms.ComboBox();
             this.lblYear = new System.Windows.Forms.Label();
             this.txtExcel = new System.Windows.Forms.TextBox();
             this.btnBrowseExcel = new System.Windows.Forms.Button();
             this.btnUpload = new System.Windows.Forms.Button();
             this.lblMsg = new System.Windows.Forms.Label();
+            this.cmbYear = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblMonth
@@ -51,18 +51,25 @@
             // cmbMonth
             // 
             this.cmbMonth.FormattingEnabled = true;
+            this.cmbMonth.Items.AddRange(new object[] {
+            "--Select--",
+            "JANUARY",
+            "FEBRUARY",
+            "MARCH",
+            "APRIL",
+            "MAY",
+            "JUNE",
+            "JULY",
+            "AUGUST",
+            "SEPTEMBER",
+            "OCTOBER",
+            "NOVEMBER",
+            "DECEMBER"});
             this.cmbMonth.Location = new System.Drawing.Point(100, 44);
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(121, 21);
             this.cmbMonth.TabIndex = 1;
-            // 
-            // cmbYear
-            // 
-            this.cmbYear.FormattingEnabled = true;
-            this.cmbYear.Location = new System.Drawing.Point(307, 47);
-            this.cmbYear.Name = "cmbYear";
-            this.cmbYear.Size = new System.Drawing.Size(121, 21);
-            this.cmbYear.TabIndex = 3;
+            this.cmbMonth.Text = "--Select--";
             // 
             // lblYear
             // 
@@ -110,6 +117,23 @@
             this.lblMsg.TabIndex = 8;
             this.lblMsg.Text = "label1";
             // 
+            // cmbYear
+            // 
+            this.cmbYear.FormattingEnabled = true;
+            this.cmbYear.Items.AddRange(new object[] {
+            "--Select--",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020"});
+            this.cmbYear.Location = new System.Drawing.Point(307, 47);
+            this.cmbYear.Name = "cmbYear";
+            this.cmbYear.Size = new System.Drawing.Size(121, 21);
+            this.cmbYear.TabIndex = 3;
+            this.cmbYear.Text = "--Select--";
+            // 
             // Payslips
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,11 +158,11 @@
 
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.ComboBox cmbMonth;
-        private System.Windows.Forms.ComboBox cmbYear;
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.TextBox txtExcel;
         private System.Windows.Forms.Button btnBrowseExcel;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.ComboBox cmbYear;
     }
 }
