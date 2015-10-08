@@ -61,6 +61,7 @@
       <DependentUpon>HRInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="HtmlTextWriter.cs" />
+    <Compile Include="Ini.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

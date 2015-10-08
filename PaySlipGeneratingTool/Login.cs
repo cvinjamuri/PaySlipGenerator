@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ini;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +27,32 @@ namespace PaySlipGeneratingTool
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LogonSuccessful = true;
-            this.Close();
+            IniFile ini = new IniFile("C:\\test.ini");
+            string UserName = ini.IniReadValue("User1", "UN");
+            string password = ini.IniReadValue("User1", "PWD");
+            if (txtUser.Text == UserName && txtPassword.Text == password)
+            {
+                LogonSuccessful = true;
+                this.Close();
+
+            }
+            else
+            {
+                LogonSuccessful = false;
+            }
+             
+       
+           
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
