@@ -1,4 +1,8 @@
-<img src='E:\Projects\Project1\Project2\AutoPayslip\images/adt.png' style='width:80px;height:20px; align:left'><p>ADROITENT ITES PVT LTD</p><p>
+
+
+
+
+<img src='C:/Users/VM/Desktop/AutoPayslip/AutoPayslip/images/adt.png' style='width:80px;height:20px; align:left'><p>ADROITENT ITES PVT LTD</p><p>
     First Floor, GUV
 
     Vivilash Chambers
@@ -8,9 +12,9 @@
 <br />
 <br />
 <div align="center">
-    PAYSLIP FOR THE MONTH OF {Month} 
+    PAYSLIP FOR THE MONTH OF {} 
 </div>
-<table>
+<table "style=font:2px">
     <tr>
         <td>
             <table align="left" border="1" cellpadding="0" cellspacing="0" width="550">
@@ -99,7 +103,7 @@
                     <td colspan="3" align="center">Deductions</td>
                 </tr>
                 </table>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style='font-size:5px'>
 
 
                     <tr>
@@ -174,8 +178,8 @@
                 </table>
                 <br />
                 <br />
-                <p>NET PAY: Rs {NETPAY}/- ({NETPAYWORDS} rupees only)</p>
+                <p>NET PAY: Rs {NETPAY}/- (rupees only)</p>
             
  
 </table>
-            
+
