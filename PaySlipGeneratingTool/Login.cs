@@ -34,7 +34,7 @@ namespace PaySlipGeneratingTool
             {
                 LogonSuccessful = false;
                 MessageBox.Show("Please enter User and Password");
-                this.ActiveControl = txtUser;
+                txtUser.Focus();
             }
             else if (txtUser.Text == UserName && txtPassword.Text == password)
             {
@@ -46,7 +46,9 @@ namespace PaySlipGeneratingTool
             {
                 LogonSuccessful = false;
                 MessageBox.Show("Invalid Credentials");
-                this.ActiveControl = txtUser;
+                txtUser.Text = "";
+                txtPassword.Text = "";
+                txtUser.Focus();
             }
 
         }
