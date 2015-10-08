@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payslip</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="E:/projects/AutoPaySlip/AutoPayslip/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="E:/projects/AutoPaySlip/AutoPayslip/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="E:/projects/AutoPaySlip/AutoPayslip/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="col-md-12 mb20">
+                <img src="E:/projects/AutoPaySlip/AutoPayslip/images/adt.png" />
+                <h4>ADROITENT ITES PRIVATE LIMITED</h4>
+                <h4>First Floor, Guv-Vivilash Chamber</h4>
+                <h4>Road No 14, Banjara Hills,</h4>
+                <h4>Hyderabad-500034</h4>
+            </div>
+
+
+            <div class="col-md-12 text-center">
+
+                <label class="text-center">PAY SLIP FOR THE MONTH OF <span>XXXXXX</span></label>
+            </div>
+
+            <div class="col-md-12 mb20">
+
+                <table class="col-md-12 payslip_table">
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-3 padlr0"><p class="pull-left">Employee Number:</p></label>
+                            <label class="col-md-9 padlr0"> <p class="pull-left">AH XXX</p></label>
+                        </td>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">Department:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">XXXXXXX</p></label>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">Full Name:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">XXX</p></label>
+                        </td>
+                        <td class="col-md-6">
+                            <label class="col-md-1 padlr0"><p class="pull-left">Place:</p></label>
+                            <label class="col-md-11 padlr0"> <p class="pull-left">XXXXXXX</p></label>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">Designation:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">AH XXX</p></label>
+                        </td>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">Pay Days:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">XXXXXXX</p></label>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-3 padlr0"><p class="pull-left">Date Of Joining:</p></label>
+                            <label class="col-md-9 padlr0"> <p class="pull-left"> XX-XX-XX</p></label>
+                        </td>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">Pan No:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">XXXXXXX</p></label>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-5 padlr0"><p class="pull-left">Name of the Bank & Branch:</p></label>
+                            <label class="col-md-7 padlr0"> <p class="pull-left">Axis Bank, Jubliee Hills</p></label>
+                        </td>
+                        <td class="col-md-6">
+                            <label class="col-md-3 padlr0"><p class="pull-left">Bank A/C No:</p></label>
+                            <label class="col-md-8 padlr0"> <p class="pull-left">XXXXXXX</p></label>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-6">
+                            <label class="col-md-2 padlr0"><p class="pull-left">PF NO:</p></label>
+                            <label class="col-md-10 padlr0"> <p class="pull-left">XXXXXX</p></label>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="col-md-12">
+
+                <table class="col-md-12 earnings">
+                    <tr>
+                        <td class="col-md-6 text-center"><b> EARNINGS</b></td>
+                        <td class="col-md-6 text-center"><b>DEDUCTIONS</b></td>
+                    </tr>
+                </table>
+
+                <div class="col-md-6 mt30">
+                    <label class="col-md-6 text-left bdr-r">Basics</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">HRA</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">CONVEYANCE</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">MEDICAL ALLOWANCES</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">OTHERS</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">VARIABLE PAY</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">NIGHT SHIFT ALLOWANCE</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">LEAVE ENCHASHMENT</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+
+                </div>
+
+                <div class="col-md-6 mt30">
+                    <label class="col-md-6 text-left bdr-r">Income Tax</label>
+                    <label class="col-md-5 text-right">XXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">EPF</label>
+                    <label class="col-md-5 text-right">XXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">PROFESSIONAL TAX</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">MEDICAL INSURANCE</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+
+                    <label class="col-md-6 text-left bdr-r">OTHERS</label>
+                    <label class="col-md-5 text-right"> XXXXXX</label>
+                </div>
+
+                <div class="col-md-12 bdr mt30">
+                    <div class="col-md-6">
+                        <label class="col-md-6 text-left bdr-r">GROSS</label>
+                        <label class="col-md-5 text-right"> XXXXXX</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="col-md-6 text-left bdr-r">DEDUCTIONS</label>
+                        <label class="col-md-5 text-right">XXXXX</label>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt30">
+
+                    <b>NET PAY: <span>RS XXXX ( XXX XXXX XXXXXX XXXXXX)</span></b>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+</body>
+</html>
