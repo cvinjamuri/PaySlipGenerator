@@ -60,7 +60,7 @@ namespace PaySlipGeneratingTool
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtUser.Select();
         }
     }
 }
