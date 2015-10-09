@@ -37,6 +37,7 @@ namespace PaySlipGeneratingTool
         public string PayslipMonthYear;
         public string EmpName;
         public int NetpayinWords;
+   
         private void btnBrowseExcel_Click(object sender, EventArgs e)
         {
             OpenFileDialog op1 = new OpenFileDialog();
@@ -45,7 +46,7 @@ namespace PaySlipGeneratingTool
             op1.Filter = "allfiles|*.*";
             txtExcel.Text = op1.FileName;
         }
-       
+
         private void btnUpload_Click(object sender, EventArgs e)
         {
             if (cmbYear.Text == "--Select--" && cmbMonth.Text == "--Select--")
@@ -63,7 +64,7 @@ namespace PaySlipGeneratingTool
                 MessageBox.Show("Please Select Year... ");
                 cmbYear.Focus();
             }
-            
+
             else if (txtExcel.Text == "")
             {
                 MessageBox.Show("Please Browse Excel file");
@@ -102,8 +103,7 @@ namespace PaySlipGeneratingTool
                     for (int row = 2; row <= xlWorksheet.UsedRange.Rows.Count; ++row)
                     {
                         for (int col = 1; col <= xlWorksheet.UsedRange.Columns.Count; ++col)
-                        {
-
+                        {                            
                             // Print value of the cell to Console.
                             var EmpNo = valueArray[row, 1] == null ? "" : valueArray[row, 1].ToString();
                             var Dep = valueArray[row, 2] == null ? "" : valueArray[row, 2].ToString();
@@ -167,7 +167,8 @@ namespace PaySlipGeneratingTool
                             temp = temp.Replace("{MEDICALINSURANCE}", MEDICALINSURANCE);
                             temp = temp.Replace("{NETPAYWORDS}", NETPAYWORDS);
                             temp = temp.Replace("{Month}", PayslipMonthYear);
-                            SendPDFEmail(temp, email);
+                           // SendPDFEmail(temp, email);
+                          
                             break;
                         }
                     }
@@ -177,7 +178,7 @@ namespace PaySlipGeneratingTool
                     this.Close();
                 }
             }
-           
+
         }
 
         public void SendPDFEmail(string dt, string Email)
@@ -212,7 +213,7 @@ namespace PaySlipGeneratingTool
                                 bytes = outputData.ToArray();
                                 try
                                 {
-                                    var MsgBody = "         Please find the attached pay slip for the month of " + PayslipMonth +" "+ PayslipYear + ". Any queries, feel free to contact me." + Environment.NewLine + Environment.NewLine + "Thanks," + Environment.NewLine + "Sravani Tamma" + Environment.NewLine + "Executive-HR";
+                                    var MsgBody = "         Please find the attached pay slip for the month of " + PayslipMonth + " " + PayslipYear + ". Any queries, feel free to contact me." + Environment.NewLine + Environment.NewLine + "Thanks," + Environment.NewLine + "Sravani Tamma" + Environment.NewLine + "Executive-HR";
                                     MailMessage message = new MailMessage();
                                     SmtpClient smtp = new SmtpClient();
 
