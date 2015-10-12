@@ -20,6 +20,7 @@ using iTextSharp.text.html.simpleparser;
 using System.Xml.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Globalization;
 
 
 
@@ -37,6 +38,7 @@ namespace PaySlipGeneratingTool
         public string PayslipMonthYear;
         public string EmpName;
         public int NetpayinWords;
+        public string PDFPassword;
    
         private void btnBrowseExcel_Click(object sender, EventArgs e)
         {
@@ -49,6 +51,7 @@ namespace PaySlipGeneratingTool
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (cmbYear.Text == "--Select--" && cmbMonth.Text == "--Select--")
             {
                 MessageBox.Show("Please Select Month and Year... ");
@@ -91,14 +94,14 @@ namespace PaySlipGeneratingTool
 
                     // Get the first worksheet.
                     Excel.Worksheet xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets.get_Item(1);
-
+                   // xlWorksheet.Cells[1, 1] = "Bad";
                     // Get the range of cells which has data.
                     Excel.Range xlRange = xlWorksheet.UsedRange;
 
                     // Get an object array of all of the cells in the worksheet with their values.
                     object[,] valueArray = (object[,])xlRange.get_Value(
                                 Excel.XlRangeValueDataType.xlRangeValueDefault);
-
+                  
                     // iterate through each cell and display the contents.
                     for (int row = 2; row <= xlWorksheet.UsedRange.Rows.Count; ++row)
                     {
@@ -124,19 +127,34 @@ namespace PaySlipGeneratingTool
                             var MEDICALALLOWANCE = valueArray[row, 17] == null ? "" : valueArray[row, 17].ToString();
                             var OTHERSGROSS = valueArray[row, 18] == null ? "" : valueArray[row, 18].ToString();
                             var VARIABLEPAY = valueArray[row, 19] == null ? "" : valueArray[row, 19].ToString();
-                            var NIGHTSHIFTALLOWANCE = valueArray[row, 20] == null ? "" : valueArray[row, 20].ToString();
+                            var NIGHTSHIFTALLOWANCE = valueArray[row, 20] == null ? "" : valueArray[row, 20].ToString();                            
                             var INCOMETAX = valueArray[row, 21] == null ? "" : valueArray[row, 21].ToString();
                             var EPF = valueArray[row, 22] == null ? "" : valueArray[row, 22].ToString();
                             var PROFESSIONALTAX = valueArray[row, 23] == null ? "" : valueArray[row, 23].ToString();
                             var OTHERSDEDUCTIONS = valueArray[row, 24] == null ? "" : valueArray[row, 24].ToString();
                             var GROSS = valueArray[row, 25] == null ? "" : valueArray[row, 25].ToString();
                             var DEDUCTIONS = valueArray[row, 26] == null ? "" : valueArray[row, 26].ToString();
-                            var NETPAY = valueArray[row, 28] == null ? "" : valueArray[row, 28].ToString();
                             var MEDICALINSURANCE = valueArray[row, 27] == null ? "" : valueArray[row, 27].ToString();
+                            var NETPAY = valueArray[row, 28] == null ? "" : valueArray[row, 28].ToString();                            
+                            var DOB = valueArray[row, 29] == null ? "" : valueArray[row, 29].ToString();
+                            var LeaveEncashment = valueArray[row, 30] == null ? "" : valueArray[row, 30].ToString();
+                            var IT = valueArray[row, 31] == null ? "" : valueArray[row, 31].ToString();
+                            var EPC = valueArray[row, 32] == null ? "" : valueArray[row, 32].ToString();
+                            var EPF1 = valueArray[row, 33] == null ? "" : valueArray[row, 33].ToString();
+                            var ESI = valueArray[row, 34] == null ? "" : valueArray[row, 34].ToString();
+                            var AdvanceLunchCoupons = valueArray[row, 35] == null ? "" : valueArray[row, 35].ToString();
+                            var Bonus = valueArray[row, 36] == null ? "" : valueArray[row, 36].ToString();
                             EmpName = Fname;
                             NameOfPDF = Fname + "_" + PayslipMonthYear + " _ Payslip.pdf";
                             NetpayinWords = int.Parse(NETPAY);
-                            var NETPAYWORDS = NumbersToWords(NetpayinWords);
+                            var NETPAYWORDS = NumbersToWords(NetpayinWords);                            
+                           // DateTime start = DateTime.Parse(DOB);
+                            //var DOBmonth = start.ToString("MM", CultureInfo.InvariantCulture);
+                            //var DOBdate = start.ToString("dd", CultureInfo.InvariantCulture);
+                            //var PDFPasscode = DOBmonth + DOBdate;
+                            PDFPassword = DOB;
+
+                           // string temp = File.ReadAllText(Path.Combine(Application.StartupPath,"adt.txt"));
                             string temp = File.ReadAllText("../../adt.txt");
                             temp = temp.Replace("{EmpNo}", EmpNo);
                             temp = temp.Replace("{Dep}", Dep);
@@ -167,18 +185,26 @@ namespace PaySlipGeneratingTool
                             temp = temp.Replace("{MEDICALINSURANCE}", MEDICALINSURANCE);
                             temp = temp.Replace("{NETPAYWORDS}", NETPAYWORDS);
                             temp = temp.Replace("{Month}", PayslipMonthYear);
-                           // SendPDFEmail(temp, email);
-                          
+                            temp = temp.Replace("{LeaveEncashment}", LeaveEncashment);
+                            temp = temp.Replace("{IT}", IT);
+                            temp = temp.Replace("{EPC}", EPC);
+                            temp = temp.Replace("{EPF1}", EPF1);
+                            temp = temp.Replace("{ESI}", ESI);
+                            temp = temp.Replace("{AdvanceLunchCoupons}", AdvanceLunchCoupons);
+                            temp = temp.Replace("{Bonus}", Bonus);
+                            SendPDFEmail(temp, email);
+                            
                             break;
                         }
                     }
+                    Cursor.Current = Cursors.Default;
                 }
                 else
                 {
                     this.Close();
                 }
             }
-
+            MessageBox.Show("Messages Sent Successfully.");
         }
 
         public void SendPDFEmail(string dt, string Email)
@@ -209,18 +235,19 @@ namespace PaySlipGeneratingTool
                             {
                                 string PDFFileword = "adt";//you can also generate Dynamic word  
                                 PdfReader reader = new PdfReader(inputData);
-                                PdfEncryptor.Encrypt(reader, outputData, true, "123", "adt", PdfWriter.ALLOW_SCREENREADERS);
+                                PdfEncryptor.Encrypt(reader, outputData, true, PDFPassword, PDFPassword, PdfWriter.ALLOW_SCREENREADERS);
                                 bytes = outputData.ToArray();
                                 try
                                 {
                                     var MsgBody = "         Please find the attached pay slip for the month of " + PayslipMonth + " " + PayslipYear + ". Any queries, feel free to contact me." + Environment.NewLine + Environment.NewLine + "Thanks," + Environment.NewLine + "Sravani Tamma" + Environment.NewLine + "Executive-HR";
+                                    var Note =Environment.NewLine+ "NOTE : Your PDF Passcode is your Date of Birth." +Environment.NewLine+"Ex: If your Birthday date like  March 5th, 2010 Then PassCode :05/03/2010 ";
                                     MailMessage message = new MailMessage();
                                     SmtpClient smtp = new SmtpClient();
 
                                     message.From = new MailAddress("chitra.vinjamuri@adroitent.com");
                                     message.To.Add(new MailAddress(Email));
                                     message.Subject = "Payslip for " + PayslipMonth;
-                                    message.Body = "Hi " + EmpName + "," + Environment.NewLine + Environment.NewLine + MsgBody;
+                                    message.Body = "Hi " + EmpName + "," + Environment.NewLine + Environment.NewLine + MsgBody + Environment.NewLine + Note;
                                     message.Attachments.Add(new Attachment(new MemoryStream(bytes), NameOfPDF));
                                     smtp.Port = 80;
                                     smtp.Host = "smtpout.secureserver.net";
@@ -229,7 +256,7 @@ namespace PaySlipGeneratingTool
                                     smtp.Credentials = new NetworkCredential("chitra.vinjamuri@adroitent.com", "123456aA");
                                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                                     smtp.Send(message);
-                                    lblMsg.Text = "Mail sent successfully";
+                                    lblMsg.Text = "Mail sent successfully";                                    
                                 }
                                 catch (Exception ex)
                                 {
@@ -309,6 +336,11 @@ namespace PaySlipGeneratingTool
         private void lblMsg_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
